@@ -24,22 +24,27 @@ public class ListNode {
 /**
  Iterate the list, jump over duplicates by replacing next with next.next
  */
-class RemoveDuplicatesFromSortedList {
+class Solution {
     func deleteDuplicates(_ head: ListNode?) -> ListNode? {
-        guard let head = head else {
-            return nil
+        if head == nil || head!.next == nil {
+            return head
         }
         
-        var curr = head
+        let dummy = ListNode(0)
+        dummy.next = head
+        var node = dummy
         
-        while curr.next != nil {
-            if curr.next!.val == curr.val {
-                curr.next = curr.next!.next
+        while node.next != nil && node.next!.next != nil {
+            if node.next!.val == node.next!.next!.val {
+                let val = node.next!.val
+                while node.next != nil && node.next!.val == val {
+                    node.next = node.next!.next
+                }
             } else {
-                curr = curr.next!
+                node = node.next!
             }
         }
         
-        return head
+        return dummy.next
     }
 }

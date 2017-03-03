@@ -24,7 +24,7 @@ public class ListNode {
 /**
  Iterate the list, jump over duplicates by replacing next with next.next
  */
-class RemoveDuplicatesFromSortedList {
+class Solution {
     func deleteDuplicates(_ head: ListNode?) -> ListNode? {
         guard let head = head else {
             return nil
