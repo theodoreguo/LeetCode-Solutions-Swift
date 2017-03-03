@@ -21,10 +21,10 @@ public class ListNode {
     }
 }
 
-/**
- Iterate the list, jump over duplicates by replacing next with next.next
- */
 class Solution {
+    /**
+     Iterate the list, jump over duplicates by replacing next with next.next
+     */
     func deleteDuplicates(_ head: ListNode?) -> ListNode? {
         if head == nil || head!.next == nil {
             return head
@@ -42,6 +42,39 @@ class Solution {
                 }
             } else {
                 node = node.next!
+            }
+        }
+        
+        return dummy.next
+    }
+    
+    /**
+     Use two pointers
+     slow - track the node before the dup nodes
+     fast - to find the last node of dups
+     
+     Note: Swift provides "===" & "!==" to compare two objects refer to the same reference
+     */
+    func deleteDuplicates2(_ head: ListNode?) -> ListNode? {
+        if head == nil || head!.next == nil {
+            return head
+        }
+        
+        let dummy = ListNode(0)
+        var fast = head, slow = dummy
+        slow.next = fast
+        
+        while fast != nil {
+            while fast?.next != nil && fast?.val == fast?.next?.val {
+                fast = fast?.next // while loop to find the last node of the dups
+            }
+            
+            if slow.next !== fast { // Duplicates detected
+                slow.next = fast?.next // Remove the dups
+                fast = slow.next // Reposition the fast pointer
+            } else { // No dup, move down both pointers
+                slow = slow.next!
+                fast = fast?.next
             }
         }
         
