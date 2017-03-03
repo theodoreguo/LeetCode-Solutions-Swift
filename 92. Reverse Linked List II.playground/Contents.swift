@@ -41,7 +41,7 @@ class Solution {
         let currNode = prevNode.next // A pointer to the beginning of a sub-list that will be reversed
         var nextNode = currNode?.next // A pointer to a node that will be reversed
         
-        // 1 - 2 - 3 - 4 - 5; m=2; n =4 ---> pre = 1, start = 2, then = 3
+        // 1 - 2 - 3 - 4 - 5; m = 2; n = 4 ---> prevNode = 1, currNode = 2, nextNode = 3
         // dummy -> 1 -> 2 -> 3 -> 4 -> 5
         
         for _ in 0 ..< n - m {
