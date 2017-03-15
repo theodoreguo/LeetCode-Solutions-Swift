@@ -47,12 +47,11 @@ class Solution {
     // Reverse each word
     private func reverseWords(_ chars:inout Array<Character>, _ len: Int) {
         var i = 0
-        for var j in 0...len {
+        for j in 0...len {
             if j == len || chars[j] == " " {
                 reverseString(&chars, i, j)
                 i = j + 1
             }
-            j += 1
         }
     }
 }
